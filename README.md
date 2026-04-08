@@ -74,29 +74,6 @@ Hasta el momento se ha realizado:
 
 ---
 
-## Propuesta provisional de estructura
-
-### Tablas base
-- `campus`
-- `vertical`
-- `modalidad`
-- `rol`
-- `tipo_proyecto`
-
-### Tablas dependientes
-- `promocion`
-- `profesor`
-- `estudiante`
-- `calificacion`
-
-### Dependencias entre tablas
-- `promocion` → depende de `campus`, `vertical`, `modalidad`
-- `profesor` → depende de `campus`, `vertical`, `rol`
-- `estudiante` → depende de `promocion`
-- `calificacion` → depende de `estudiante`, `tipo_proyecto`
-
----
-
 ## Archivos actuales
 
 ### Notebooks
