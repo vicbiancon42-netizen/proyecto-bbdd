@@ -70,19 +70,6 @@ Hasta el momento se ha realizado:
 - organización inicial de carpetas
 - subida del notebook de limpieza inicial
 - análisis preliminar de la estructura de los datos
-- propuesta inicial de entidades y relaciones
-
----
-
-## Archivos actuales
-
-### Notebooks
-- `cleanup_daniel.ipynb` → limpieza y transformación inicial de los datos
-
-### SQL
-- `01_create_tables.sql`
-- `02_insert_data.sql`
-- `03_queries_demo.sql`
 
 ---
 
@@ -90,10 +77,10 @@ Hasta el momento se ha realizado:
 Todavía hace falta confirmar de forma conjunta:
 
 - el modelo final de tablas y relaciones
-- la estructura definitiva de `promocion`
-- la modelización final de `proyectos`
+- la estructura definitiva de las entidades
+- la modelización final de proyectos
 - las claves primarias y foráneas definitivas
-- los nombres finales de algunas entidades
+- los nombres finales de algunas tablas
 
 ---
 
