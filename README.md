@@ -1,105 +1,124 @@
 # Proyecto BBDD
 
-## Descripción del proyecto
-Este proyecto tiene como objetivo transformar una tabla plana con datos de alumnado y claustro en una base de datos relacional normalizada.
-
-A partir de varios archivos CSV, se trabaja la limpieza, organización y estructuración de los datos para construir un modelo relacional en PostgreSQL, acompañado de su diagrama E/R, modelo lógico, scripts SQL y consultas de prueba.
-
----
+Proyecto de diseño e implementación de una **base de datos relacional** a partir de archivos CSV con información de estudiantes y claustro, desarrollado en **PostgreSQL**.
 
 ## Objetivo
-Diseñar una base de datos funcional y escalable que permita:
 
-- separar entidades correctamente
-- reducir redundancia
-- mantener integridad referencial
-- consultar la información de forma clara y eficiente
+El objetivo del proyecto fue transformar una estructura plana de datos en un modelo relacional organizado, normalizado y preparado para consultas SQL.
+
+Para ello, se trabajó en tres fases principales:
+
+- limpieza y transformación de los datos con **pandas**
+- diseño del **modelo entidad-relación** y del **modelo lógico**
+- implementación de la base de datos en **PostgreSQL** mediante **pgAdmin**
 
 ---
 
-## Flujo general del proyecto
+## Datos de entrada
 
-CSV data  
-↓  
-Python + pandas  
-↓  
-PostgreSQL  
-↑  
-pgAdmin 4  
+Los archivos utilizados como punto de partida fueron:
 
-### Explicación del flujo
-- **CSV data**: punto de partida con los datos originales en formato plano
-- **Python + pandas**: lectura, limpieza, transformación y preparación de tablas
-- **PostgreSQL**: base de datos relacional final
-- **pgAdmin 4**: entorno para validar la estructura, ejecutar scripts y probar queries
+- `clase_1.csv`
+- `clase_2.csv`
+- `clase_3.csv`
+- `clase_4.csv`
+- `claustro.csv`
+
+Los cuatro archivos de clase contenían información de estudiantes y compartían una estructura similar, por lo que se integraron en un único conjunto de datos.  
+El archivo `claustro.csv` se trató por separado al corresponder a una entidad diferente.
+
+---
+
+## Proceso realizado
+
+### 1. Limpieza y transformación
+- concatenación de los archivos de estudiantes
+- carga separada de `claustro.csv`
+- corrección de pequeñas inconsistencias
+- transformación de proyectos de formato ancho a formato largo mediante `melt`
+- creación de tablas de referencia y tablas principales
+
+### 2. Normalización
+Se separaron los valores repetidos en tablas independientes para reducir redundancia y mejorar la consistencia del modelo.
+
+Tablas de apoyo creadas:
+- `campus`
+- `modalidad`
+- `promocion`
+- `rol`
+- `vertical`
+- `tipo_proyecto`
+
+### 3. Modelado
+Se elaboró un **diagrama E/R** y un **modelo lógico** para representar las entidades principales, sus atributos y relaciones.
+
+### 4. Implementación en PostgreSQL
+Se creó la base de datos en PostgreSQL y se implementaron las tablas necesarias para almacenar la información transformada y ejecutar consultas SQL.
+
+---
+
+## Estructura de la base de datos
+
+### Tablas principales
+- `estudiante`
+- `faculty`
+- `calificacion`
+
+### Tablas de apoyo
+- `campus`
+- `modalidad`
+- `promocion`
+- `rol`
+- `vertical`
+- `tipo_proyecto`
+
+---
+
+## Diagramas
+
+Los diagramas del proyecto se encuentran en la carpeta `diagramas/`:
+
+- `er_diagrama_final.pdf`
+- `er_diagrama_simple.pdf`
+- `modelo_logico_final.pdf`
+
+---
+
+## Notebook principal
+
+El proceso de limpieza y transformación de los datos se encuentra en:
+
+- `notebooks/limpieza_y_transformacion_datos.ipynb`
+
+---
+
+## Scripts SQL
+
+Los scripts SQL se encuentran en la carpeta `sql/`:
+
+- `01_create_tables.sql`
+- `02_insert_data.sql`
+- `03_queries_demo.sql`
+
+> Nota: estos archivos recogen la estructura y las consultas del proyecto y pueden seguir ajustándose para reflejar exactamente la versión final validada en PostgreSQL.
+
+---
+
+## Presentación
+
+Presentación editable en Canva:
+
+[https://canva.link/d36afws5q9grnm8](https://canva.link/d36afws5q9grnm8)
 
 ---
 
 ## Estructura del repositorio
 
-proyecto-bbdd/  
-├── README.md  
-├── data/  
-├── diagrams/  
-├── notebooks/  
-└── sql/  
-
-### Contenido de cada carpeta
-- `data/` → archivos CSV originales
-- `notebooks/` → notebooks de análisis y limpieza
-- `diagrams/` → diagrama E/R y modelo lógico visual
-- `sql/` → scripts SQL de creación, inserción y consultas
-- `README.md` → documentación general del proyecto
-
----
-
-## Convenciones de organización
-
-- Los archivos CSV originales van en `data/`
-- Los notebooks de análisis y limpieza van en `notebooks/`
-- Los diagramas finales van en `diagrams/`
-- Los scripts SQL finales van en `sql/`
-- Los nombres de archivos deben ser claros y consistentes
-
----
-
-## Estado actual del proyecto
-Hasta el momento se ha realizado:
-
-- creación del repositorio base
-- organización inicial de carpetas
-- subida del notebook de limpieza inicial
-- análisis preliminar de la estructura de los datos
-
----
-
-## Puntos pendientes de validación en grupo
-Todavía hace falta confirmar de forma conjunta:
-
-- el modelo final de tablas y relaciones
-- la estructura definitiva de las entidades
-- la modelización final de proyectos
-- las claves primarias y foráneas definitivas
-- los nombres finales de algunas tablas
-
----
-
-## Checklist de trabajo
-
-- [x] Crear repositorio base
-- [x] Crear estructura inicial de carpetas
-- [x] Subir notebook de limpieza inicial
-
-- [ ] Subir archivos CSV originales a `data/`
-- [ ] Validar en grupo el modelo final
-- [ ] Cerrar entidades, relaciones, PK y FK
-- [ ] Hacer diagrama E/R
-- [ ] Hacer modelo lógico visual
-- [ ] Generar tablas finales desde la limpieza
-- [ ] Escribir `01_create_tables.sql`
-- [ ] Escribir `02_insert_data.sql`
-- [ ] Escribir `03_queries_demo.sql`
-- [ ] Cargar la base en PostgreSQL
-- [ ] Probar queries en pgAdmin
-- [ ] Organizar la parte visual final
-- [ ] Revisar README final
+```text
+proyecto-bbdd/
+├── data/
+├── diagramas/
+├── notebooks/
+├── sql/
+├── .gitignore
+└── README.md
